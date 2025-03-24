@@ -1,0 +1,286 @@
+A51 MACRO ASSEMBLER  QZY2021300878                                                        05/13/2024 02:26:26 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN qzy2021300878.OBJ
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE qzy2021300878.s SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG             0000H
+0000 0130              2     AJMP    START
+                       3     
+001B                   4     ORG     001BH                                    
+001B 01CA              5     AJMP    TIME
+                       6     
+0030                   7     ORG             0030H                                    
+                       8     
+0030                   9     START:                                                   
+0030 75A0FF           10     MOV             P2,#0FFH                                 
+0033 7590FF           11     MOV             P1,#0FFH                                 
+0036 7580FF           12     MOV             P0,#0FFH                                 
+                      13     
+0039 758901           14     MOV             TMOD,#01H                
+003C 758C3C           15     MOV             TH0,#3CH
+003F 758AB0           16     MOV             TL0,#0B0H                
+0042 D28C             17     SETB    TR0                                             
+0044 D2AF             18     SETB    EA
+0046 D2A9             19     SETB    ET0
+                      20     
+0048 751014           21     MOV             10H,#14H                                 
+004B 7D14             22     MOV             R5,#14H                             
+004D 7C23             23     MOV             R4,#23H                             
+004F 7B00             24     MOV             R3,#00H                             
+0051 7908             25     MOV             R1,#08H                 
+                      26     
+0053 752003           27     MOV             20H,#03H                            
+0056 752105           28     MOV             21H,#05H
+0059 752204           29     MOV             22H,#04H
+005C 752300           30     MOV             23H,#00H
+                      31             
+005F 75A015           32     MOV             P2,#15H                                  
+0062 759001           33     MOV     P1,#01H                                  
+                      34     
+                      35     
+0065                  36     LOOP:                                               
+0065 900155           37     MOV             DPTR,#TABDIG
+                      38     
+0068 E520             39     MOV   A,20H
+006A 93               40     MOVC  A,@A+DPTR
+006B F580             41     MOV   P0,A
+006D 314B             42     ACALL DEL
+006F E590             43     MOV   A,P1
+0071 23               44     RL    A
+0072 F590             45     MOV   P1,A
+                      46     
+                      47     
+0074 E521             48     MOV   A,21H
+0076 93               49     MOVC  A,@A+DPTR
+0077 F580             50     MOV   P0,A
+0079 314B             51     ACALL DEL
+007B E590             52     MOV   A,P1
+007D 23               53     RL    A
+007E F590             54     MOV   P1,A
+                      55     
+                      56     
+0080 E522             57     MOV   A,22H
+0082 93               58     MOVC  A,@A+DPTR
+A51 MACRO ASSEMBLER  QZY2021300878                                                        05/13/2024 02:26:26 PAGE     2
+
+0083 F580             59     MOV   P0,A
+0085 314B             60     ACALL DEL
+0087 E590             61     MOV   A,P1
+0089 23               62     RL    A
+008A F590             63     MOV   P1,A
+                      64     
+                      65     
+008C E523             66     MOV   A,23H
+008E 93               67     MOVC  A,@A+DPTR
+008F F580             68     MOV   P0,A
+0091 314B             69     ACALL DEL
+0093 E590             70     MOV   A,P1
+0095 23               71     RL    A
+0096 F590             72     MOV   P1,A
+                      73     
+                      74     
+0098 E522             75     MOV   A,22H
+009A 93               76     MOVC  A,@A+DPTR
+009B F580             77     MOV   P0,A
+009D 314B             78     ACALL DEL
+009F E590             79     MOV   A,P1
+00A1 23               80     RL    A
+00A2 F590             81     MOV   P1,A
+                      82     
+                      83     
+00A4 E523             84     MOV   A,23H
+00A6 93               85     MOVC  A,@A+DPTR
+00A7 F580             86     MOV   P0,A
+00A9 314B             87     ACALL DEL
+00AB E590             88     MOV   A,P1
+00AD 23               89     RL    A
+00AE F590             90     MOV   P1,A
+                      91     
+                      92     
+00B0 E522             93     MOV   A,22H
+00B2 93               94     MOVC  A,@A+DPTR
+00B3 F580             95     MOV   P0,A
+00B5 314B             96     ACALL DEL
+00B7 E590             97     MOV   A,P1
+00B9 23               98     RL    A
+00BA F590             99     MOV   P1,A
+                     100     
+                     101     
+00BC E523            102     MOV   A,23H
+00BE 93              103     MOVC  A,@A+DPTR
+00BF F580            104     MOV   P0,A
+00C1 314B            105     ACALL DEL
+00C3 E590            106     MOV   A,P1
+00C5 23              107     RL    A
+00C6 F590            108     MOV   P1,A                               
+                     109     
+00C8 0165            110     AJMP LOOP                                          
+                     111     
+00CA                 112     TIME:                                              
+00CA DD04            113     DJNZ    R5,RER5                           
+00CC 7D14            114     MOV             R5,#014H                                   
+00CE 01D9            115     AJMP    GREEN
+                     116     
+                     117     
+                     118     
+00D0                 119     RER5:                                             
+00D0 758C3C          120     MOV             TH0,#3CH                           
+00D3 758AB0          121     MOV             TL0,#0B0H
+00D6 D28C            122     SETB    TR0
+00D8 32              123     RETI
+                     124     
+A51 MACRO ASSEMBLER  QZY2021300878                                                        05/13/2024 02:26:26 PAGE     3
+
+00D9                 125     GREEN:                                             
+00D9 E521            126     MOV             A,21H
+00DB 6004            127     JZ              REGRE                              
+00DD 1521            128     DEC             21H                                        
+00DF 8005            129     SJMP    RED                                        
+                     130     
+00E1                 131     REGRE:                                             
+00E1 1520            132     DEC             20H                                        
+00E3 752109          133     MOV             21H,#09H                           
+                     134     
+00E6                 135     RED:                                               
+00E6 E523            136     MOV             A,23H
+00E8 6007            137     JZ              REY                                        
+00EA 1523            138     DEC             23H                                        
+00EC DC28            139     DJNZ    R4,RETT                                    
+00EE 01FB            140     AJMP    LIGHT                                      
+00F0 32              141     RETI
+                     142     
+00F1                 143     REY:
+00F1 1522            144     DEC             22H
+00F3 752309          145     MOV             23H,#09H
+00F6 DC1E            146     DJNZ    R4,RETT                                    
+00F8 01FB            147     AJMP    LIGHT                                      
+00FA 32              148     RETI
+                     149     
+00FB                 150     LIGHT:
+00FB 900166          151     MOV     DPTR,#COLOR                       
+00FE E9              152     MOV     A,R1
+00FF 93              153     MOVC    A,@A+DPTR
+0100 EB              154     MOV             A,R3
+0101 701B            155     JNZ             MAIN                                       
+                     156     
+0103                 157     XXX:
+0103 7B01            158     MOV             R3,#01H                                    
+0105 7C05            159     MOV             R4,#5H                                     
+0107 752000          160     MOV             20H,#00H                               
+010A 752105          161     MOV             21H,#05H
+010D 900166          162     MOV     DPTR,#COLOR                       
+0110 19              163     DEC             R1                                             
+0111 E9              164     MOV     A,R1
+0112 93              165     MOVC    A,@A+DPTR 
+0113 F5A0            166     MOV             P2,A      
+0115 32              167     RETI
+                     168     
+0116                 169     RETT:                                                      
+0116 900166          170     MOV     DPTR,#COLOR                       
+0119 E9              171     MOV     A,R1
+011A 93              172     MOVC    A,@A+DPTR 
+011B F5A0            173     MOV             P2,A      
+011D 32              174     RETI
+                     175     
+011E                 176     MAIN:
+011E 900166          177     MOV     DPTR,#COLOR                       
+0121 19              178     DEC             R1                                             
+0122 E9              179     MOV     A,R1
+0123 93              180     MOVC    A,@A+DPTR 
+0124 F5A0            181     MOV             P2,A
+0126                 182     RE:
+0126 752003          183     MOV             20H,#03H                               
+0129 752105          184     MOV             21H,#05H
+012C 752204          185     MOV             22H,#04H
+012F 752300          186     MOV             23H,#00H
+                     187     
+0132 E590            188     MOV             A,P1
+0134 03              189     RR              A                                                  
+0135 03              190     RR              A
+A51 MACRO ASSEMBLER  QZY2021300878                                                        05/13/2024 02:26:26 PAGE     4
+
+0136 F590            191     MOV             P1,A
+0138 7C23            192     MOV             R4,#23H                                    
+013A 7B00            193     MOV             R3,#00H                                    
+013C 758C3C          194     MOV             TH0,#3CH                               
+013F 758AB0          195     MOV             TL0,#0B0H                                 
+0142 D28C            196     SETB    TR0
+0144 E9              197     MOV             A,R1                                       
+0145 6001            198     JZ              REEE                                       
+0147 32              199     RETI
+                     200     
+0148                 201     REEE:
+0148 7908            202     MOV             R1,#08H
+014A 32              203     RETI
+                     204      
+014B                 205     DEL:                                
+014B 7E1A            206     MOV  R6,#1AH
+014D                 207     DL2:
+014D 7F10            208     MOV  R7,#10H
+014F                 209     DL1:
+                     210     
+014F 00              211     NOP
+0150 DFFD            212     DJNZ  R7,DL1
+0152 DEF9            213     DJNZ  R6,DL2
+0154 22              214     RET               
+                     215     
+0155                 216     TABDIG:                             
+0155 3F065B4F        217         DB  3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H,40H 
+0159 666D7D07                
+015D 7F6F777C                
+0161 395E7971                
+0165 40                      
+                     218     
+0166                 219     COLOR:                              
+0166 15565459        220             DB      15H,56H,54H,59H,51H,65H,45H,95H,15H
+016A 51654595                
+016E 15                      
+                     221                                                                                                
+                                                   
+                     222     END
+A51 MACRO ASSEMBLER  QZY2021300878                                                        05/13/2024 02:26:26 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COLOR. . . . . . .  C ADDR   0166H   A   
+DEL. . . . . . . .  C ADDR   014BH   A   
+DL1. . . . . . . .  C ADDR   014FH   A   
+DL2. . . . . . . .  C ADDR   014DH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+GREEN. . . . . . .  C ADDR   00D9H   A   
+LIGHT. . . . . . .  C ADDR   00FBH   A   
+LOOP . . . . . . .  C ADDR   0065H   A   
+MAIN . . . . . . .  C ADDR   011EH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RE . . . . . . . .  C ADDR   0126H   A   
+RED. . . . . . . .  C ADDR   00E6H   A   
+REEE . . . . . . .  C ADDR   0148H   A   
+REGRE. . . . . . .  C ADDR   00E1H   A   
+RER5 . . . . . . .  C ADDR   00D0H   A   
+RETT . . . . . . .  C ADDR   0116H   A   
+REY. . . . . . . .  C ADDR   00F1H   A   
+START. . . . . . .  C ADDR   0030H   A   
+TABDIG . . . . . .  C ADDR   0155H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIME . . . . . . .  C ADDR   00CAH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+XXX. . . . . . . .  C ADDR   0103H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
